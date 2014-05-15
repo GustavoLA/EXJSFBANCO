@@ -1,7 +1,7 @@
 package br.com.controller;
 
-import br.com.modelo.Autor;
-import br.com.modelo.Livro;
+import br.com.modelo.Cargo;
+import br.com.modelo.Funcionario;
 import br.com.modelo.persistencia.CargoDAOJPA;
 import br.com.modelo.persistencia.FuncionarioDAOJPA;
 import br.com.modelo.persistencia.dao.CargoDAO;
@@ -16,12 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 @ManagedBean
 public class FuncionarioBean {
 
-    private Livro funcionario;
-    private List<Livro> funcionarios;
+    private Funcionario funcionario;
+    private List<Funcionario> funcionarios;
     private int cargoId;
 
     public FuncionarioBean() {
-        funcionario = new Livro();
+        funcionario = new Funcionario();
     }
 
     public String insere() {
@@ -29,7 +29,7 @@ public class FuncionarioBean {
         CargoDAO cargoDao = new CargoDAOJPA(manager);
 
         if (cargoId != 0) {
-            Autor cargo = cargoDao.buscarPorId(Autor.class, cargoId);
+            Cargo cargo = cargoDao.buscarPorId(Cargo.class, cargoId);
             this.funcionario.setCargo(cargo);
         }
         FuncionarioDAO dao = new FuncionarioDAOJPA(manager);
@@ -41,15 +41,14 @@ public class FuncionarioBean {
     public String preparaAlteracao() {
         EntityManager manager = this.getManager();
         FuncionarioDAO dao = new FuncionarioDAOJPA(manager);
-        this.funcionario = dao.buscarPorId(Livro.class, funcionario.getCodigo());
+        this.funcionario = dao.buscarPorId(Funcionario.class, funcionario.getCodigo());
         return "/paginas/funcionario.xhtml";
     }
 
     public void remove() {
         EntityManager manager = this.getManager();
         FuncionarioDAO dao = new FuncionarioDAOJPA(manager);
-        dao.remover(Livro.class, funcionario.getCodigo());
-        this.funcionarios = null;
+        dao.remover(Funcionario.class, funcionario.getCodigo());
     }
 
     private EntityManager getManager() {
@@ -59,11 +58,11 @@ public class FuncionarioBean {
         return (EntityManager) request.getAttribute("EntityManager");
     }
 
-    public Livro getFuncionario() {
+    public Funcionario getFuncionario() {
         return funcionario;
     }
 
-    public void setFuncionario(Livro funcionario) {
+    public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
     }
 
@@ -75,11 +74,11 @@ public class FuncionarioBean {
         this.cargoId = cargoId;
     }
 
-    public List<Livro> getFuncionarios() {
+    public List<Funcionario> getFuncionarios() {
         if (this.funcionarios == null) {
             EntityManager manager = this.getManager();
             FuncionarioDAO dao = new FuncionarioDAOJPA(manager);
-            this.funcionarios = dao.buscarTodos(Livro.class);
+            this.funcionarios = dao.buscarTodos(Funcionario.class);
         }
         return funcionarios;
     }

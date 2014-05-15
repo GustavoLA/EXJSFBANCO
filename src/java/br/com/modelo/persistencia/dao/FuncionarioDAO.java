@@ -1,10 +1,10 @@
 
 package br.com.modelo.persistencia.dao;
 
-import br.com.modelo.Livro;
+import br.com.modelo.Funcionario;
 
 
 public interface FuncionarioDAO extends
-        DAO<Livro, Integer>{
+        DAO<Funcionario, Integer>{
     
 }

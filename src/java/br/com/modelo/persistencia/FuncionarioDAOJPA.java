@@ -1,14 +1,14 @@
 
 package br.com.modelo.persistencia;
 
-import br.com.modelo.Livro;
+import br.com.modelo.Funcionario;
 import br.com.modelo.persistencia.dao.FuncionarioDAO;
 import javax.persistence.EntityManager;
 
 
 
 public class FuncionarioDAOJPA  extends
-        DAOJPA<Livro, Integer> 
+        DAOJPA<Funcionario, Integer> 
         implements FuncionarioDAO{
 
     public FuncionarioDAOJPA(EntityManager 

@@ -1,3 +1,4 @@
+
 package br.com.modelo;
 
 import javax.persistence.Entity;
@@ -5,16 +6,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-//Cargo = Autor
 @Entity
-public class Autor {
-
-    @Id
-    @GeneratedValue
+public class Cargo {
+    @Id @GeneratedValue
     private int codigo;
     private String nome;
     @Lob
-    private String sobre;
+    private String descricao;
+    private String idade;
 
     public int getCodigo() {
         return codigo;
@@ -32,11 +31,24 @@ public class Autor {
         this.nome = nome;
     }
 
-    public String getSobre() {
-        return sobre;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setSobre(String sobre) {
-        this.sobre = sobre;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
+
+    public String getIdade() {
+        return idade;
+    }
+
+    public void setIdade(String idade) {
+        this.idade = idade;
+    }
+    
+    
+    
+    
+    
 }
